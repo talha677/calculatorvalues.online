@@ -1,0 +1,38 @@
+@media (601px <=width <=1440px) {
+
+    .nav-icon-5:not(.open):hover span:nth-child(1) {
+        transform: rotate(-3deg) scaleY(1.1);
+    }
+
+    .nav-icon-5:not(.open):hover span:nth-child(2) {
+        transform: rotate(3deg) scaleY(1.1);
+    }
+
+    .nav-icon-5:not(.open):hover span:nth-child(3) {
+        transform: rotate(-4deg) scaleY(1.1);
+    }
+
+    .hero .banner .search-bar  {
+        width: calc(100% - 25%);
+    }
+
+    .calculater .calculate {
+        max-width: 425px;
+    }
+
+    .calculaters {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .calculaters .cal-section .cal-box {
+        width: 240px;
+        height: 170px;
+        margin-top: 5px;
+    }
+
+    .cal-overview .cal-content {
+        width: calc(100% - 50%);
+    }
+}

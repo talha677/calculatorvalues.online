@@ -1,0 +1,880 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* ========== Default Css ========= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    list-style: none;
+}
+
+:root {
+    /* ===== Colors ===== */
+    --primary-color: #24a0ed;
+    --primary-color-light: #f6f5ff;
+    --hover-color: #24a0ed8c;
+    --body-color: #e4e9f7;
+    --sidebar-color: #fff;
+    --toggle-color: #ddd;
+    --text-color: #707070;
+    --text1-color: #fff;
+    --bg-color: #222;
+    --bg1-color: #3F51B5;
+    --gradient1-color: #7E57C2;
+    --gradient2-color: #3F51B5;
+
+    /* ====== Transition ====== */
+    --tran-01: all 0.1s ease-in-out;
+    --tran-02: all 0.2s ease-in-out;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+button {
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--body-color);
+    transition: var(--tran-05);
+
+}
+
+::selection {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+body.dark {
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
+}
+
+.sidebar.close {
+    width: 0px;
+    padding: 0;
+}
+
+/* ===== Reusable code - Here ===== */
+.sidebar li {
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon {
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon {
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.sidebar .text,
+.sidebar .icon {
+    color: var(--text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar .text {
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar.close .text {
+    opacity: 0;
+}
+
+.sidebar header {
+    position: relative;
+}
+
+.sidebar header .image-text {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar header .logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+header .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+header .image-text .name span {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+header .image-text .profession {
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.sidebar header .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar header .image img {
+    width: 50px;
+    border-radius: 40px;
+}
+
+.sidebar .menu {
+    margin-top: 40px;
+}
+
+.sidebar li a {
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.sidebar li a:hover {
+    background-color: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+    color: var(--sidebar-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+.menu-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar .menu-bar .mode {
+    border-radius: 6px;
+    background-color: var(--primary-color-light);
+    position: relative;
+    transition: var(--tran-05);
+}
+
+.menu-bar .mode .sun-moon {
+    height: 50px;
+    width: 60px;
+}
+
+.mode .sun-moon i {
+    position: absolute;
+}
+
+.mode .sun-moon i.sun {
+    opacity: 0;
+}
+
+body.dark .mode .sun-moon i.sun {
+    opacity: 1;
+}
+
+body.dark .mode .sun-moon i.moon {
+    opacity: 0;
+}
+
+.menu-bar .bottom-content .toggle-switch {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.toggle-switch .switch {
+    position: relative;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+    transition: var(--tran-05);
+}
+
+.switch::before {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background-color: var(--sidebar-color);
+    transition: var(--tran-03);
+}
+
+body.dark .switch::before {
+    left: 20px;
+}
+
+
+/* ========== TopBar Style Here ========== */
+.topbar {
+    position: fixed;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--bg-color);
+    z-index: 99;
+}
+
+
+.topbar .toggle {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: var(--tran-05);
+    gap: 5px;
+}
+
+.topbar .toggle {
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.topbar .image-text {
+    display: flex;
+    align-items: center;
+    color: var(--text1-color);
+}
+
+.topbar .image-text .logo-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.topbar .image-text .name {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.topbar .image-text .name span {
+    margin-top: 2px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.topbar .image-text .profession {
+    font-size: 16px;
+    margin-top: -2px;
+    display: block;
+}
+
+.topbar .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topbar .image img {
+    width: 50px;
+    border-radius: 40px;
+}
+
+/* nav-icon-5 */
+.nav-icon-5 {
+    width: 35px;
+    height: 30px;
+    margin: 10px 10px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.nav-icon-5 span {
+    background-color: #fff;
+    position: absolute;
+    border-radius: 2px;
+    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+    width: 100%;
+    height: 4px;
+    transition-duration: 500ms;
+}
+
+.nav-icon-5 span:nth-child(1) {
+    top: 0px;
+    left: 0px;
+}
+
+.nav-icon-5 span:nth-child(2) {
+    top: 13px;
+    left: 0px;
+    opacity: 1;
+}
+
+.nav-icon-5 span:nth-child(3) {
+    bottom: 0px;
+    left: 0px;
+}
+
+.nav-icon-5.open span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 13px;
+}
+
+.nav-icon-5.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-icon-5.open span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 13px;
+}
+
+/* ========== Hero Section Style Here ========== */
+
+.banner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    background: var(--bg1-color);
+    background-image: linear-gradient(var(--gradient1-color) 50%, var(--gradient2-color));
+    height: calc(100% - 100px);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero .banner .banner-text .heading {
+    font-weight: bold;
+    font-size: 2.3rem;
+    color: var(--text1-color);
+    margin-bottom: 15px;
+}
+
+.hero .banner .banner-text .para {
+    font-weight: 400;
+    color: var(--text1-color);
+    margin-bottom: 5px;
+}
+
+.hero .banner .search-bar {
+    width: 105%;
+    padding: 10px 15px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color-light);
+    margin: 10px 0;
+}
+
+.hero .banner .search-bar input {
+    background-color: var(--primary-color-light);
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 5px;
+}
+
+.hero .banner .search-bar input::placeholder {
+    font-size: 1rem;
+}
+
+.hero .banner .search-bar .search-icon {
+    font-size: 1.5rem;
+    width: 100%;
+    padding: 4px;
+}
+
+.hero .banner .rating-star {
+    margin-bottom: 10px;
+}
+
+.hero .banner .rating-star .para {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--text1-color);
+    margin-bottom: 5px;
+}
+
+.hero .banner .rating-star h4 {
+    font-weight: 400;
+    color: var(--text1-color);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.hero .banner .go-link a {
+    font-size: 1rem;
+    color: var(--text1-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: var(--primary-color);
+}
+
+/* ========== Calculators List Section Style Here ========== */
+.calculaters {
+    padding: 0px 20px;
+    position: relative;
+    top: -60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.calculaters .cal-section {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+}
+
+.calculaters .cal-section .cal-box {
+    cursor: pointer;
+    background-color: var(--primary-color-light);
+    width: 185px;
+    height: 130px;
+    padding: 25px 15px;
+    text-align: center;
+    align-content: center;
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+.calculaters .cal-section .cal-box span {
+    font-size: 2rem;
+}
+
+.calculaters .cal-section .cal-box h4 {
+    font-size: calc(1rem + .25rem);
+    line-height: 25px;
+}
+
+/* ========== Standerd Calculator Section Style Here ========== */
+.calculater {
+    padding: 15px;
+    max-width: auto;
+}
+
+.calculater .calculate {
+    width: 100%;
+    height: 100%;
+    background: var(--bg1-color);
+    background-image: linear-gradient(var(--gradient2-color) 50%, var(--gradient1-color));
+    border-radius: 20px;
+    padding: 15px 10px;
+    position: relative;
+}
+
+.calculater .calculate .input-field {
+    background-color: var(--sidebar-color);
+    border-radius: 10px;
+    margin: 20px 0;
+    height: 110px;
+}
+
+.calculater .calculate .input-field input {
+    background-color: var(--sidebar-color);
+    padding: 0px 5px;
+    width: 100%;
+    height: 50px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: end;
+    overflow: hidden !important;
+    white-space: nowrap;
+}
+
+.calculater .calculate .input-field input:first-child {
+    padding: 0 7px;
+    font-size: 1rem;
+    border-radius: 20px;
+}
+
+.more-cal {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+}
+
+.more-cal .nav-icon-5 {
+    width: 25px;
+    height: 20px;
+    margin: 0 5px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    z-index: 10;
+}
+
+.more-cal .nav-icon-5 span:nth-child(2) {
+    top: 8px;
+    left: 0px;
+}
+
+.more-cal .nav-icon-5:active span:nth-child(2) {
+    transition: var(--tran-02);
+    width: 18px;
+}
+
+.more-cal .nav-icon-5:active span:nth-child(3) {
+    transition: var(--tran-02);
+    width: 11px;
+}
+
+.more-cal h2 {
+    font-size: 1.8rem;
+    color: var(--text1-color);
+    line-height: 30px;
+    margin-left: 7px;
+}
+
+.more-cal .recheck img {
+    margin: 0 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.calculate .cal-topbtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.calculate .cal-topbtn .btn1 {
+    font-size: 1rem;
+    color: var(--text1-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background: transparent;
+}
+
+.calculate .cal-topbtn .grey {
+    color: rgba(255, 255, 255, 0.459);
+}
+
+.calculate .cal-topbtn .btn1:active {
+    background-color: var(--hover-color);
+}
+
+.calculate .buttons .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    margin: 5px 0;
+}
+
+.calculate .buttons .row button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(65px + 100%);
+    height: calc(52px + 10px);
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.calculate .buttons .row button:active {
+    background-color: var(--hover-color);
+}
+
+.eq {
+    background-color: var(--primary-color);
+}
+
+sup {
+    font-size: 0.85rem;
+    margin-top: -10px;
+}
+
+.calculate .cal-toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10;
+    width: 75%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #222;
+    z-index: 9;
+    transition: var(--tran-01);
+    padding-top: 55px;
+}
+
+.calculate .close1 {
+    width: 0;
+}
+
+
+/*  */
+
+.calculate .menu-links h3 {
+    padding: 0 20px;
+    font-size: 17px;
+    margin: 10px 0;
+}
+
+.calculate li {
+    /* border: 1px solid red; */
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.calculate .icon {
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.calculate .text,
+.calculate .icon,
+h3 {
+    color: var(--text1-color);
+    transition: var(--tran-03);
+}
+
+.calculate .text,
+h3 {
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.calculate.close1 .text {
+    opacity: 0;
+}
+
+.calculate .menu {
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+.calculate li a {
+    list-style: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.calculate li a:hover {
+    background-color: var(--primary-color);
+}
+
+.calculate li a:hover .icon,
+.calculate li a:hover .text {
+    color: var(--sidebar-color);
+}
+
+body.dark .calculate li a:hover .icon,
+body.dark .calculate li a:hover .text {
+    color: var(--text-color);
+}
+
+.calculate .menu-bar {
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+    border-bottom: 1px solid var(--text-color);
+}
+
+.calculate .cal-box1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    color: var(--text1-color);
+    font-size: 1.2rem;
+}
+
+.calculate .cal-box1 i {
+    font-size: 2rem;
+}
+
+.cal-toggle .cal-box1 {
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.cal-toggle.close1 .cal-box1 {
+    opacity: 0;
+}
+
+
+
+/* ========== Calculator Overview Section Style Here ========== */
+
+.cal-overview {
+    padding: 15px;
+    max-width: auto;
+}
+
+.cal-content h1 {
+    font-size: 1.8rem;
+    font-family: "Ubuntu", system-ui;
+    font-weight: 900;
+
+}
+
+.cal-overview .cal-content p {
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.cal-overview .cal-content ul {
+    margin-top: 10px;
+}
+
+.cal-overview .cal-content ul li {
+    list-style-type: square;
+    font-weight: bold;
+    margin-top: 5px;
+    cursor: text;
+    margin-left: 15px;
+}
+
+.cal-overview .cal-content ul li ol li {
+    list-style-type: decimal;
+}
+
+.all-cal .btn {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-cal .btn button {
+    font-size: 1.5rem;
+    color: var(--text1-color);
+    padding: 5px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background: transparent;
+    background: var(--bg1-color);
+}
+
+
+/* ========== Calculator Overview Section Style Here ========== */
+
+
+.footer {
+    margin-top: 20px;
+    padding: 10px 20px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg1-color);
+    background-image: linear-gradient(35deg, var(--gradient1-color) 50%, var(--gradient2-color));
+    color: var(--text1-color);
+}
+
+.footer p span {
+    font-weight: bold;
+}
